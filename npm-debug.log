@@ -1,0 +1,113 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/jinphen/.nvm/v0.10.38/bin/node',
+1 verbose cli   '/Users/jinphen/.nvm/v0.10.38/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.38
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /Users/jinphen/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/Users/jinphen/.npm/gulp-requirejs/0.1.4/package.tgz', '.' ]
+11 verbose tarball /Users/jinphen/.npm/gulp-requirejs/0.1.4/package.tgz
+12 verbose folder .
+13 info prepublish gulp-requirejs@0.1.4
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /Users/jinphen/.npm/1f1177db-tar.lock
+16 silly lockFile ce3ae302-gulp-requirejs-0-1-4-package-tgz tar:///Users/jinphen/.npm/gulp-requirejs/0.1.4/package.tgz
+17 verbose lock tar:///Users/jinphen/.npm/gulp-requirejs/0.1.4/package.tgz /Users/jinphen/.npm/ce3ae302-gulp-requirejs-0-1-4-package-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile ce3ae302-gulp-requirejs-0-1-4-package-tgz tar:///Users/jinphen/.npm/gulp-requirejs/0.1.4/package.tgz
+21 silly lockFile ce3ae302-gulp-requirejs-0-1-4-package-tgz tar:///Users/jinphen/.npm/gulp-requirejs/0.1.4/package.tgz
+22 silly lockFile 7a8bc34a-npm-gulp-requirejs-0-1-4-package /Users/jinphen/.npm/gulp-requirejs/0.1.4/package
+23 verbose lock /Users/jinphen/.npm/gulp-requirejs/0.1.4/package /Users/jinphen/.npm/7a8bc34a-npm-gulp-requirejs-0-1-4-package.lock
+24 silly lockFile 7a8bc34a-npm-gulp-requirejs-0-1-4-package /Users/jinphen/.npm/gulp-requirejs/0.1.4/package
+25 silly lockFile 7a8bc34a-npm-gulp-requirejs-0-1-4-package /Users/jinphen/.npm/gulp-requirejs/0.1.4/package
+26 silly lockFile 3a52ce78- .
+27 silly lockFile 3a52ce78- .
+28 silly publish { name: 'gulp-requirejs',
+28 silly publish   description: 'Builds projects using require.js\'s optimizer',
+28 silly publish   version: '0.1.4',
+28 silly publish   homepage: 'http://github.com/robinthrift/gulp-requirejs',
+28 silly publish   repository:
+28 silly publish    { type: 'git',
+28 silly publish      url: 'git://github.com/robinthrift/gulp-requirejs.git' },
+28 silly publish   author:
+28 silly publish    { name: 'Robin Thrift',
+28 silly publish      email: 'thrift.d.robin@googlemail.com',
+28 silly publish      url: 'http://webbrickworks.com/' },
+28 silly publish   main: './index.js',
+28 silly publish   keywords: [],
+28 silly publish   dependencies:
+28 silly publish    { 'gulp-util': '~2.2.5',
+28 silly publish      requirejs: '^2.1.20',
+28 silly publish      'event-stream': '~3.0.20' },
+28 silly publish   devDependencies: { mocha: '*', should: '*' },
+28 silly publish   scripts: { test: 'mocha' },
+28 silly publish   engines: { node: '>= 0.4.0' },
+28 silly publish   licenses:
+28 silly publish    [ { type: 'MIT',
+28 silly publish        url: 'http://github.com/robinthrift/gulp-requirejs/raw/master/LICENSE' } ],
+28 silly publish   readme: '#gulp-requirejs\n\n[![Dependency Status](https://david-dm.org/robinthrift/gulp-requirejs.png)](https://david-dm.org/robinthrift/gulp-requirejs)\n[![Build Status](https://travis-ci.org/RobinThrift/gulp-requirejs.png?branch=master)](https://travis-ci.org/RobinThrift/gulp-requirejs)\n\n## Information\n\nA small, simply, very easy wrapper around the [require.js optimizer](https://github.com/jrburke/r.js) to work with [gulp.js](https://github.com/gulpjs/gulp)\n\n<table>\n<tr> \n<td>Package</td><td>gulp-requirejs</td>\n</tr>\n<tr>\n<td>Description</td>\n<td>uses require.js\'s r.js optimizer to combine require.js AMD modules into one file</td>\n</tr>\n<tr>\n<td>Node Version</td>\n<td>>= 0.4</td>\n</tr>\n</table>\n\n\n##Installation\n\nSimply add `gulp-requirejs` as a dev-dependency in your package.json or run\n\n```bash\n$ npm install --save-dev gulp-requirejs\n```\n\n## Usage\n\nBecause the require.js optimizer (_r.js_) is a kind of build system in itself we can\'t use the `gulp.src([...])` syntax at the moment (I might add this in future), instead this wrapper itself emits a pipable stream, holding a \'virtual\' file, in which the result of the r.js build process are saved.\n  \nThe resulting stream can be treated like a regular `gulp.src(...)` stream.\n\n>NOTE: The built in minification/obfuscation is deactivated by default and can not be switched on. Please use a gulp plugin like gulp-uglify for this.\n\n```javascript\nvar gulp = require(\'gulp\'),\n    rjs = require(\'gulp-requirejs\');\n\ngulp.task(\'requirejsBuild\', function() {\n    rjs({\n        baseUrl: \'path/to/your/base/file.js\',\n        out: \'FILENAME\\_TO\\_BE\\_OUTPUTTED\',\n        shim: {\n            // standard require.js shim options\n        },\n        // ... more require.js options\n    })\n        .pipe(gulp.dest(\'./delpoy/\')); // pipe it to the output DIR\n});\n```\n\n### Error handling\n\ngulp-requirejs will emit errors when you don\'t pass an options object and if the `baseUrl` or `out` properties are undefined. \n  \nThe requiere.js optimizer itself might also emit errors; unfortunately there\'s no way of catching them elegantly at the moment. \n\n\n## Options\n\nThe options object supports the same parameters as the [require.js optimizer](https://github.com/jrburke/r.js).\n\n',
+28 silly publish   readmeFilename: 'README.md',
+28 silly publish   gitHead: '86c6062ac8f479632f69efaf8d91bf758c71e7d7',
+28 silly publish   bugs: { url: 'https://github.com/robinthrift/gulp-requirejs/issues' },
+28 silly publish   _id: 'gulp-requirejs@0.1.4',
+28 silly publish   _shasum: 'e32e83f574c02ff0f183cb4477b049dca25d4094',
+28 silly publish   _from: '.' }
+29 verbose request where is /gulp-requirejs
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id f290ba0e22855d7f
+32 verbose url raw /gulp-requirejs
+33 verbose url resolving [ 'https://registry.npmjs.org/', './gulp-requirejs' ]
+34 verbose url resolved https://registry.npmjs.org/gulp-requirejs
+35 verbose request where is https://registry.npmjs.org/gulp-requirejs
+36 info trying registry request attempt 1 at 11:13:26
+37 http PUT https://registry.npmjs.org/gulp-requirejs
+38 http 403 https://registry.npmjs.org/gulp-requirejs
+39 verbose headers { 'content-type': 'application/json',
+39 verbose headers   'cache-control': 'max-age=60',
+39 verbose headers   'content-length': '106',
+39 verbose headers   'accept-ranges': 'bytes',
+39 verbose headers   date: 'Thu, 22 Oct 2015 03:13:27 GMT',
+39 verbose headers   via: '1.1 varnish',
+39 verbose headers   connection: 'keep-alive',
+39 verbose headers   'x-served-by': 'cache-hkg6825-HKG',
+39 verbose headers   'x-cache': 'MISS',
+39 verbose headers   'x-cache-hits': '0',
+39 verbose headers   'x-timer': 'S1445483606.841660,VS0,VE761' }
+40 error publish Failed PUT 403
+41 error Error: You do not have permission to publish 'gulp-requirejs'. Are you logged in as the correct user? : gulp-requirejs
+41 error     at RegClient.<anonymous> (/Users/jinphen/.nvm/v0.10.38/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:308:14)
+41 error     at Request._callback (/Users/jinphen/.nvm/v0.10.38/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:246:65)
+41 error     at Request.self.callback (/Users/jinphen/.nvm/v0.10.38/lib/node_modules/npm/node_modules/request/request.js:236:22)
+41 error     at Request.emit (events.js:98:17)
+41 error     at Request.<anonymous> (/Users/jinphen/.nvm/v0.10.38/lib/node_modules/npm/node_modules/request/request.js:1142:14)
+41 error     at Request.emit (events.js:117:20)
+41 error     at IncomingMessage.<anonymous> (/Users/jinphen/.nvm/v0.10.38/lib/node_modules/npm/node_modules/request/request.js:1096:12)
+41 error     at IncomingMessage.emit (events.js:117:20)
+41 error     at _stream_readable.js:944:16
+41 error     at process._tickCallback (node.js:448:13)
+42 error If you need help, you may report this *entire* log,
+42 error including the npm and node versions, at:
+42 error     <http://github.com/npm/npm/issues>
+43 error System Darwin 14.5.0
+44 error command "/Users/jinphen/.nvm/v0.10.38/bin/node" "/Users/jinphen/.nvm/v0.10.38/bin/npm" "publish"
+45 error cwd /Users/jinphen/Documents/code/github-my/gulp-requirejs
+46 error node -v v0.10.38
+47 error npm -v 1.4.28
+48 verbose exit [ 1, true ]

@@ -1,5 +1,5 @@
 {
-  "name": "gulp-requirejs",
+  "name": "requirejs-stream",
   "description": "Builds projects using require.js's optimizer",
   "version": "0.1.4",
   "homepage": "http://github.com/robinthrift/gulp-requirejs",
