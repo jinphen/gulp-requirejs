@@ -1,14 +1,16 @@
-#gulp-requirejs
+#requirejs-stream
 
 [![Dependency Status](https://david-dm.org/robinthrift/gulp-requirejs.png)](https://david-dm.org/robinthrift/gulp-requirejs)
 [![Build Status](https://travis-ci.org/RobinThrift/gulp-requirejs.png?branch=master)](https://travis-ci.org/RobinThrift/gulp-requirejs)
+
+## fork from [gulp-requirejs](https://github.com/bleadof/gulp-requirejs)
 
 ## Information
 
 A small, simply, very easy wrapper around the [require.js optimizer](https://github.com/jrburke/r.js) to work with [gulp.js](https://github.com/gulpjs/gulp)
 
 <table>
-<tr> 
+<tr>
 <td>Package</td><td>gulp-requirejs</td>
 </tr>
 <tr>
@@ -24,23 +26,23 @@ A small, simply, very easy wrapper around the [require.js optimizer](https://git
 
 ##Installation
 
-Simply add `gulp-requirejs` as a dev-dependency in your package.json or run
+Simply add `requirejs-stream as a dev-dependency in your package.json or run
 
 ```bash
-$ npm install --save-dev gulp-requirejs
+$ npm install --save-dev requirejs-stream
 ```
 
 ## Usage
 
 Because the require.js optimizer (_r.js_) is a kind of build system in itself we can't use the `gulp.src([...])` syntax at the moment (I might add this in future), instead this wrapper itself emits a pipable stream, holding a 'virtual' file, in which the result of the r.js build process are saved.
-  
+
 The resulting stream can be treated like a regular `gulp.src(...)` stream.
 
 >NOTE: The built in minification/obfuscation is deactivated by default and can not be switched on. Please use a gulp plugin like gulp-uglify for this.
 
 ```javascript
 var gulp = require('gulp'),
-    rjs = require('gulp-requirejs');
+    rjs = require('requirejs-stream');
 
 gulp.task('requirejsBuild', function() {
     rjs({
@@ -57,12 +59,11 @@ gulp.task('requirejsBuild', function() {
 
 ### Error handling
 
-gulp-requirejs will emit errors when you don't pass an options object and if the `baseUrl` or `out` properties are undefined. 
-  
-The requiere.js optimizer itself might also emit errors; unfortunately there's no way of catching them elegantly at the moment. 
+gulp-requirejs will emit errors when you don't pass an options object and if the `baseUrl` or `out` properties are undefined.
+
+The requiere.js optimizer itself might also emit errors; unfortunately there's no way of catching them elegantly at the moment.
 
 
 ## Options
 
 The options object supports the same parameters as the [require.js optimizer](https://github.com/jrburke/r.js).
-
