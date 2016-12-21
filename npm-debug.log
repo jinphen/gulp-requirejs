@@ -1,0 +1,120 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/jinphen/.nvm/versions/node/v4.2.1/bin/node',
+1 verbose cli   '/Users/jinphen/.nvm/versions/node/v4.2.1/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.5
+3 info using node@v4.2.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/jinphen/Documents/code/web/github/gulp-requirejs',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/jinphen/.npm/requirejs-stream/0.1.4/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/jinphen/.npm correctMkdir not in flight; initializing
+10 info lifecycle requirejs-stream@0.1.4~prepublish: requirejs-stream@0.1.4
+11 silly lifecycle requirejs-stream@0.1.4~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/jinphen/.npm/requirejs-stream/0.1.4/package.tgz',
+12 verbose tar pack   '/Users/jinphen/Documents/code/web/github/gulp-requirejs' ]
+13 verbose tarball /Users/jinphen/.npm/requirejs-stream/0.1.4/package.tgz
+14 verbose folder /Users/jinphen/Documents/code/web/github/gulp-requirejs
+15 verbose addLocalTarball adding from inside cache /Users/jinphen/.npm/requirejs-stream/0.1.4/package.tgz
+16 verbose correctMkdir /Users/jinphen/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd requirejs-stream@0.1.4
+18 verbose afterAdd /Users/jinphen/.npm/requirejs-stream/0.1.4/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/jinphen/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/jinphen/.npm/requirejs-stream/0.1.4/package/package.json written
+21 silly publish { name: 'requirejs-stream',
+21 silly publish   description: 'Builds projects using require.js\'s optimizer',
+21 silly publish   version: '0.1.4',
+21 silly publish   homepage: 'https://github.com/jinphen/gulp-requirejs',
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+ssh://git@github.com/jinphen/gulp-requirejs.git' },
+21 silly publish   author:
+21 silly publish    { name: 'Robin Thrift',
+21 silly publish      email: 'thrift.d.robin@googlemail.com',
+21 silly publish      url: 'http://webbrickworks.com/' },
+21 silly publish   main: './index.js',
+21 silly publish   keywords: [],
+21 silly publish   dependencies:
+21 silly publish    { 'gulp-util': '~2.2.5',
+21 silly publish      requirejs: '^2.3.2',
+21 silly publish      'event-stream': '~3.0.20' },
+21 silly publish   devDependencies: { mocha: '*', should: '*' },
+21 silly publish   scripts: { test: 'mocha' },
+21 silly publish   engines: { node: '>= 0.4.0' },
+21 silly publish   licenses:
+21 silly publish    [ { type: 'MIT',
+21 silly publish        url: 'https://github.com/jinphen/gulp-requirejs' } ],
+21 silly publish   readme: '#requirejs-stream\n\n[![Dependency Status](https://david-dm.org/robinthrift/gulp-requirejs.png)](https://david-dm.org/robinthrift/gulp-requirejs)\n[![Build Status](https://travis-ci.org/RobinThrift/gulp-requirejs.png?branch=master)](https://travis-ci.org/RobinThrift/gulp-requirejs)\n\n## fork from [gulp-requirejs](https://github.com/bleadof/gulp-requirejs)\n\n## Information\n\nA small, simply, very easy wrapper around the [require.js optimizer](https://github.com/jrburke/r.js) to work with [gulp.js](https://github.com/gulpjs/gulp)\n\n<table>\n<tr>\n<td>Package</td><td>gulp-requirejs</td>\n</tr>\n<tr>\n<td>Description</td>\n<td>uses require.js\'s r.js optimizer to combine require.js AMD modules into one file</td>\n</tr>\n<tr>\n<td>Node Version</td>\n<td>>= 0.4</td>\n</tr>\n</table>\n\n\n##Installation\n\nSimply add `requirejs-stream as a dev-dependency in your package.json or run\n\n```bash\n$ npm install --save-dev requirejs-stream\n```\n\n## Usage\n\nBecause the require.js optimizer (_r.js_) is a kind of build system in itself we can\'t use the `gulp.src([...])` syntax at the moment (I might add this in future), instead this wrapper itself emits a pipable stream, holding a \'virtual\' file, in which the result of the r.js build process are saved.\n\nThe resulting stream can be treated like a regular `gulp.src(...)` stream.\n\n>NOTE: The built in minification/obfuscation is deactivated by default and can not be switched on. Please use a gulp plugin like gulp-uglify for this.\n\n```javascript\nvar gulp = require(\'gulp\'),\n    rjs = require(\'requirejs-stream\');\n\ngulp.task(\'requirejsBuild\', function() {\n    rjs({\n        baseUrl: \'path/to/your/base/file.js\',\n        out: \'FILENAME\\_TO\\_BE\\_OUTPUTTED\',\n        shim: {\n            // standard require.js shim options\n        },\n        // ... more require.js options\n    })\n        .pipe(gulp.dest(\'./delpoy/\')); // pipe it to the output DIR\n});\n```\n\n### Error handling\n\ngulp-requirejs will emit errors when you don\'t pass an options object and if the `baseUrl` or `out` properties are undefined.\n\nThe requiere.js optimizer itself might also emit errors; unfortunately there\'s no way of catching them elegantly at the moment.\n\n\n## Options\n\nThe options object supports the same parameters as the [require.js optimizer](https://github.com/jrburke/r.js).\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: 'da3210aa7784c9ce5fd055940e6295d46603a9f5',
+21 silly publish   bugs: { url: 'https://github.com/jinphen/gulp-requirejs/issues' },
+21 silly publish   _id: 'requirejs-stream@0.1.4',
+21 silly publish   _shasum: 'a079e517980c7057e99fe74f2d616d97773b6362',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name requirejs-stream
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'requirejs-stream',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'requirejs-stream',
+26 silly mapToRegistry   name: 'requirejs-stream',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/requirejs-stream
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/jinphen/.npm/requirejs-stream/0.1.4/package.tgz
+30 verbose request uri https://registry.npmjs.org/requirejs-stream
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 12:34:49 PM
+33 verbose request using bearer token for auth
+34 verbose request id b80679bca5827dd3
+35 http request PUT https://registry.npmjs.org/requirejs-stream
+36 http 403 https://registry.npmjs.org/requirejs-stream
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Wed, 21 Dec 2016 04:34:48 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-hkg6825-HKG',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1482294888.148115,VS0,VE747',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /Users/jinphen/.npm/registry.npmjs.org/requirejs-stream on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 0.1.4." : requirejs-stream
+40 verbose stack     at makeError (/Users/jinphen/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/Users/jinphen/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+40 verbose stack     at Request._callback (/Users/jinphen/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+40 verbose stack     at Request.self.callback (/Users/jinphen/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/request/request.js:200:22)
+40 verbose stack     at emitTwo (events.js:87:13)
+40 verbose stack     at Request.emit (events.js:172:7)
+40 verbose stack     at Request.<anonymous> (/Users/jinphen/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/request/request.js:1067:10)
+40 verbose stack     at emitOne (events.js:82:20)
+40 verbose stack     at Request.emit (events.js:169:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/Users/jinphen/.nvm/versions/node/v4.2.1/lib/node_modules/npm/node_modules/request/request.js:988:12)
+41 verbose statusCode 403
+42 verbose pkgid requirejs-stream
+43 verbose cwd /Users/jinphen/Documents/code/web/github/gulp-requirejs
+44 error Darwin 16.1.0
+45 error argv "/Users/jinphen/.nvm/versions/node/v4.2.1/bin/node" "/Users/jinphen/.nvm/versions/node/v4.2.1/bin/npm" "publish"
+46 error node v4.2.1
+47 error npm  v3.10.5
+48 error code E403
+49 error "You cannot publish over the previously published version 0.1.4." : requirejs-stream
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
